@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>json</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="table_responsive">
+        <h1>Json data</h1>
+        <br>
+    </div>
+    <table class="table table_borderd table_striped" id="user_table">
+        <tr>
+            <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Text</th>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
+
+<script>
+$(document).ready(function(){
+    $.getJSON("https://jsonplaceholder.typicode.com/posts", function(data){
+        var user_data = "";
+        $.each(data,function(key,value){
+            user_data += '<tr>';
+            user_data += '<td>'+value.userId+'<td>';
+            user_data += '<td>'+value.id+'<td>';
+            user_data += '<td>'+value.title+'<td>';
+            user_data += '<td>'+value.body+'<td>';
+            user_data += '<tr>';
+        });
+        $('#user_table').append(user_data);
+    });
+});
+</script>
+        
